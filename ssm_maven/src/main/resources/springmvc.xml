@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!--  开启注解扫描 扫描所有包下的注解-->
+<context:component-scan base-package="com.shop.web"></context:component-scan>
+  <!--注解驱动：
+  替我们显示的配置了最新版的注解的处理器映射器和处理器适配器-->
+  <!-- conversion-service="conversionServiceFactoryBean" -->
+<mvc:annotation-driven ></mvc:annotation-driven>
+
+<!--视图解析器
+作用:在controller中指定页面路径的时候就不用写页面的完整路径名称了,可以直接写页面去掉扩展名的名称-->
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <!--前缀-->
+  <property name="prefix" value="/WEB-INF/jsp/"></property>
+  <!--后缀-->
+  <property name="suffix" value=".jsp"></property>
+</bean>
+
+  <!--配置自定义转换器
+    注意: 一定要将自定义的转换器配置到注解驱动上-->
+  <!-- <bean name="conversionServiceFactoryBean" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <property name="converters">
+      <set>
+        指定自定义转换器的全路径名称
+        <bean class="com.shop.convert.Myconvert1"></bean>
+      </set>
+    </property>
+  </bean> -->
+
+  <!-- 配置全局异常处理器
+  如果使用@Component注解则不用再配置，但是一定要开启扫描exception包下的注解-->
+  <!--<bean class="com.shop.exception.GoableException"></bean>-->
+
+  <!--文件上传解析器-->
+  <!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    设置上传文件的最大尺寸为5MB
+    <property name="maxUploadSize">
+      <value>5242880</value>
+    </property>
+  </bean> -->
+
+  <!--放行静态资源-->
+  <mvc:resources mapping="js/**" location="js/"></mvc:resources>
+
+  <!--配置拦截器-->
+  <!-- <mvc:interceptors>
+    <mvc:interceptor>
+      配置需要拦截哪些请求
+      /**表示拦截所有请求，包含父子目录
+      <mvc:mapping path="/**"></mvc:mapping>
+      <bean class="com.shop.interceptor.Myinterceptor"></bean>
+      <bean class="com.shop.interceptor.LoginInterceptor"></bean>
+    </mvc:interceptor>
+  </mvc:interceptors> -->
+</beans>    
