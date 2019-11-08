@@ -9,5 +9,10 @@ public class DemoTest {
 	public void name() {
 		System.out.println("aaaaa");
 	}
+	
+	//分支
+	private void name2() {
+		System.out.println(111);
+	}
 
 }
