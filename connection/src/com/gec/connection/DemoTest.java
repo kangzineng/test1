@@ -15,9 +15,17 @@ public class DemoTest {
 		System.out.println("lisi");
 	}
 	
+
 	//李四后提交方法
 	public void lisi2() {
 		System.out.println("lisi2");
 	}
+
+	//张三先提交方法
+	public void zhangsan() {
+		System.out.println("zhangsan");
+	}
+	
+
 
 }
