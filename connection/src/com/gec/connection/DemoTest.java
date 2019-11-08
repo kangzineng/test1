@@ -9,5 +9,11 @@ public class DemoTest {
 	public void name() {
 		System.out.println("aaaaa");
 	}
+	
+	//李四的方法
+	public void lisi() {
+		System.out.println("lisi");
+	}
+	
 
 }
